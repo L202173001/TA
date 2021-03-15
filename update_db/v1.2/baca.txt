@@ -1,0 +1,4 @@
+1. Buat Database eqi_fc_dev
+2. Import Database eqi_fc_dev.sql
+3. Edit file .env, ubah jadi DB_DATABASE=eqi_fc_dev
+4. Test
