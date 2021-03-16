@@ -3,15 +3,8 @@
 @section('title','Troubleshoot')
 
 @section('content')
-<style>
+<link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet">
 
-/* .form-group .error{
-    font-size: 12px;
-    color: red;
-    text-align: left;
-} */
-
-</style>
 <div class="jumbotron">
     <div class="container">
         <!-- Outer Row -->
@@ -67,8 +60,9 @@
                                                 </div>
                                             </div>
  
-                                            <input type="button" id="previous" onclick="prevForm(this)" class="btn btn-solid-lg btn-block mt-3" value="Previous">
-                                            <button type="button" id="next" onclick="nextForm(this)" class="btn btn-solid-lg btn-block">Continue</button>
+                                            <button type="button" id="next" onclick="nextForm(this)" class="btn btn-solid-lg btn-outline-primary btn-block mt-3">Continue</button>
+                                            <input type="button" id="previous" onclick="prevForm(this)" class="btn btn-outline-lg btn-block" value="Previous">
+
                                         </fieldset>
                                         @endforeach
                                         <fieldset>
@@ -82,7 +76,7 @@
                                             <div class="form-group text-center">
                                                 <p>Input is complete, are you sure of your input? If not, please check your input again. If you are sure, please press the submit button.</p>
                                             </div>
-                                            <input type="button"  id="previous" onclick="prevForm(this)" class="btn btn-solid-lg btn-block" value="Previous">
+                                            <input type="button"  id="previous" onclick="prevForm(this)" class="btn btn-outline-lg btn-block" value="Previous">
                                             <input type="submit" name="submit" id="submit" class="btn btn-solid-lg btn-block" value="Submit">
                                         </fieldset>
                                     </form>
@@ -101,7 +95,8 @@
 @endsection
 
 @push('scripts')
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+{{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script> --}}
 
 <script type="text/javascript">
 var current_
@@ -109,7 +104,7 @@ function nextForm(e) {
   var phone = document.forms["ms-form"]["phone"].value;
   var name = document.forms["ms-form"]["name"].value;
   if ((phone == "") || (name == "")) {
-    alert("Name and Phone Number must be filled out!");
+    toastr.error('Name and Phone Number must be filled out!', 'Error!')
     return false;
   } else {
     $(e).parent().next().show();
