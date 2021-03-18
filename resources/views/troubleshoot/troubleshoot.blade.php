@@ -101,15 +101,15 @@
 <script type="text/javascript">
 var current_
 function nextForm(e) {
-  var phone = document.forms["ms-form"]["phone"].value;
-  var name = document.forms["ms-form"]["name"].value;
-  if ((phone == "") || (name == "")) {
-    toastr.error('Name and Phone Number must be filled out!', 'Error!')
-    return false;
-  } else {
-    $(e).parent().next().show();
-    $(e).parent().hide();
-  }
+    var phone = document.forms["ms-form"]["phone"].value;
+    var name = document.forms["ms-form"]["name"].value;
+    if ((phone == "") || (name == "")) {
+        toastr.error('Name and Phone Number must be filled out!', 'Error!')
+        return false;
+    } else {
+        $(e).parent().next().show();
+        $(e).parent().hide();
+    }
     
 }
 
