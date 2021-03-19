@@ -34,11 +34,24 @@
                                                 <td>:</td>
                                                 <td class="result">{{ $phone }}</td>
                                             </tr>
-                                            <tr>
-                                                <td><b>Selected Symptoms</b></td>
-                                                <td>:</td>
-                                                <td class="result"></td>
-                                            </tr>
+
+                                            
+                                            @foreach ($symptoms as $item)
+                                              @if ($loop -> first)
+                                                <tr>
+                                                  <td><b>Selected Symptoms</b></td>
+                                                  <td>:</td>
+                                                  <td class="result">- {{ $item -> SymptomCode -> symptom }}</td>
+                                                </tr>
+                                              @else
+                                                <tr>
+                                                  <td></td>
+                                                  <td></td>
+                                                  <td class="result">- {{ $item -> SymptomCode -> symptom }}</td>
+                                                </tr>
+                                              @endif
+                                            @endforeach
+                                            
                                             <tr>
                                                 <td><b>Result</b><br><i>Forward Chaining</i></td>
                                                 <td>:</td>
@@ -59,11 +72,22 @@
                                                 <td>:</td>
                                                 <td class="result">{{ $phone }}</td>
                                             </tr>
-                                            <tr>
-                                                <td><b>Selected Symptoms</b></td>
-                                                <td>:</td>
-                                                <td class="result"></td>
-                                            </tr>
+                                            
+                                            @foreach ($symptoms as $item)
+                                              @if ($loop -> first)
+                                                <tr>
+                                                  <td><b>Selected Symptoms</b></td>
+                                                  <td>:</td>
+                                                  <td class="result">- {{ $item -> SymptomCode -> symptom }}</td>
+                                                </tr>
+                                              @else
+                                                <tr>
+                                                  <td></td>
+                                                  <td></td>
+                                                  <td class="result">- {{ $item -> SymptomCode -> symptom }}</td>
+                                                </tr>
+                                              @endif
+                                            @endforeach
                                             <tr>
                                                 <td><b>Result</b><br><i>Forward Chaining</i></td>
                                                 <td>:</td>

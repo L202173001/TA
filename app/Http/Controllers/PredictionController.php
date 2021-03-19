@@ -8,6 +8,9 @@ use App\Models\Rule;
 use App\Models\Symptom;
 use App\Models\Trouble;
 use App\Models\Vrule;
+use App\Models\Enduser;
+use App\Models\Result;
+use App\Models\SymptomHistory;
 
 class PredictionController extends Controller
 {
@@ -52,23 +55,26 @@ class PredictionController extends Controller
         return $result;
     }
 
-    public function showResult($data)
+    public function showResult($data, $enduser_id)
     {
         // Fungsi ini digunakan untuk menampilkan hasil diagnosa
         if($data['status'] == False) {
+            $symptoms = SymptomHistory::where("enduser_id", $enduser_id) -> get();
             return view('devs.result', [
                 "status"=>False,
                 "name"=> $data['name'],
-                "phone"=> $data['phone']
+                "phone"=> $data['phone'],
+                "symptoms" => $symptoms
             ]);
         } else {
             $diagnosis = Trouble::where("troubles_code",$data['troubles_code'])->first();
-
+            $symptoms = SymptomHistory::where("enduser_id", $enduser_id) -> get();
             return view('devs.result', [
                 "status" => True,
                 "name"=> $data['name'],
                 "phone"=> $data['phone'],
-                "trouble"=>$diagnosis
+                "trouble"=>$diagnosis,
+                "symptoms" => $symptoms
             ]);
         }
 
@@ -76,12 +82,19 @@ class PredictionController extends Controller
 
     public function predict(Request $request)
     {
+        $data = array(
+          "name" => $request -> name,
+          "phone_number" => $request -> phone,
+        );
+        //create enduser
+        $endUserCreate = Enduser::create($data);
+        $enduser_id = $endUserCreate -> id;
         // Validasi input nama dan nomor telepon,
-        $request->validate([
-            'name' => 'required',
-            'phone' => 'required',
-        ]);
-
+        // $request->validate([
+        //     'name' => 'required',
+        //     'phone' => 'required',
+        // ]);
+        
         // Get Rule to Array
         $rules = $this->getRule();
         // dd($rules);
@@ -112,11 +125,34 @@ class PredictionController extends Controller
                     "phone"=>$request->phone
                 );
 
-                return $this->showResult($result);
+                $data = array(
+                  "troubles_code" => $rule['troubles_code']
+                );
+                $resultCreate = Result::create($data);
+                $result_id = $resultCreate -> id;
+
+                foreach($input as $item) {
+                  $data = array(
+                    "enduser_id" => $enduser_id,
+                    "result_id" => $result_id,
+                    "symptoms_code" => $item,
+                    "status" => 'True'
+                  );
+                  $historyCreate = SymptomHistory::create($data);
+                }
+                return $this->showResult($result, $enduser_id);
                 exit;
             }
         }
 
-        return $this->showResult($result);
+        foreach($input as $item) {
+          $data = array(
+            "enduser_id" => $enduser_id,
+            "symptoms_code" => $item,
+            "status" => 'False'
+          );
+          $historyCreate = SymptomHistory::create($data);
+        }
+        return $this->showResult($result, $enduser_id);
     }
 }
