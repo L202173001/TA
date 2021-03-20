@@ -16,12 +16,9 @@ class CreateSymptomHistoryTable extends Migration
         Schema::disableForeignKeyConstraints();
         Schema::create('symptom_history', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('enduser_id');
-            $table->unsignedBigInteger('result_id') -> nullable();
+            $table->unsignedBigInteger('result_id');
             $table->char('symptoms_code', 3);
-            $table->String('status', 5);
             $table->foreign('symptoms_code')->references('symptoms_code')->on('symptoms');
-            $table->foreign('enduser_id')->references('id')->on('endusers');
             $table->foreign('result_id')->references('id')->on('results');
             $table->timestamps();
         });

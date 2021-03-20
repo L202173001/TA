@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\SymptomHistory;
+use App\Models\Result;
 
 class HistoryController extends Controller
 {
@@ -13,7 +15,8 @@ class HistoryController extends Controller
      */
     public function index()
     {
-        return view('history.history');
+        $results = Result::paginate(10);
+        dd($results[0] -> Trouble -> trouble);
     }
 
     /**

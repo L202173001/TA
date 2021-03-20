@@ -10,7 +10,7 @@ class SymptomHistory extends Model
     use HasFactory;
     protected $table = 'symptom_history';
     protected $fillable = [
-      'id', 'enduser_id', 'result_id', 'symptoms_code', 'status'
+      'id',  'result_id', 'symptoms_code',
     ];
 
     public function SymptomCode() {

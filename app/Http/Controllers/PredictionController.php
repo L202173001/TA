@@ -8,7 +8,6 @@ use App\Models\Rule;
 use App\Models\Symptom;
 use App\Models\Trouble;
 use App\Models\Vrule;
-use App\Models\Enduser;
 use App\Models\Result;
 use App\Models\SymptomHistory;
 
@@ -55,11 +54,11 @@ class PredictionController extends Controller
         return $result;
     }
 
-    public function showResult($data, $enduser_id)
+    public function showResult($data, $result_id)
     {
         // Fungsi ini digunakan untuk menampilkan hasil diagnosa
         if($data['status'] == False) {
-            $symptoms = SymptomHistory::where("enduser_id", $enduser_id) -> get();
+            $symptoms = SymptomHistory::where("result_id", $result_id) -> get();
             return view('devs.result', [
                 "status"=>False,
                 "name"=> $data['name'],
@@ -68,7 +67,7 @@ class PredictionController extends Controller
             ]);
         } else {
             $diagnosis = Trouble::where("troubles_code",$data['troubles_code'])->first();
-            $symptoms = SymptomHistory::where("enduser_id", $enduser_id) -> get();
+            $symptoms = SymptomHistory::where("result_id", $result_id) -> get();
             return view('devs.result', [
                 "status" => True,
                 "name"=> $data['name'],
@@ -82,13 +81,7 @@ class PredictionController extends Controller
 
     public function predict(Request $request)
     {
-        $data = array(
-          "name" => $request -> name,
-          "phone_number" => $request -> phone,
-        );
-        //create enduser
-        $endUserCreate = Enduser::create($data);
-        $enduser_id = $endUserCreate -> id;
+        
         // Validasi input nama dan nomor telepon,
         // $request->validate([
         //     'name' => 'required',
@@ -126,33 +119,43 @@ class PredictionController extends Controller
                 );
 
                 $data = array(
-                  "troubles_code" => $rule['troubles_code']
+                  "name" => $request -> name,
+                  "phone_number" => $request -> phone,
+                  "troubles_code" => $rule['troubles_code'],
+                  "status" => 'True'
                 );
+                //create result
                 $resultCreate = Result::create($data);
                 $result_id = $resultCreate -> id;
 
+           
                 foreach($input as $item) {
                   $data = array(
-                    "enduser_id" => $enduser_id,
                     "result_id" => $result_id,
                     "symptoms_code" => $item,
-                    "status" => 'True'
                   );
                   $historyCreate = SymptomHistory::create($data);
                 }
-                return $this->showResult($result, $enduser_id);
+                return $this->showResult($result, $result_id);
                 exit;
             }
         }
 
+        $data = array(
+          "name" => $request -> name,
+          "phone_number" => $request -> phone,
+          "status" => 'False'
+        );
+        //create result
+        $resultCreate = Result::create($data);
+        $result_id = $resultCreate -> id;
         foreach($input as $item) {
           $data = array(
-            "enduser_id" => $enduser_id,
+            "result_id" => $result_id,
             "symptoms_code" => $item,
-            "status" => 'False'
           );
           $historyCreate = SymptomHistory::create($data);
         }
-        return $this->showResult($result, $enduser_id);
+        return $this->showResult($result, $result_id);
     }
 }
