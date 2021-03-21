@@ -82,7 +82,7 @@ Route::middleware('auth')->prefix('dashboard')->group(function () {
 
     ############# History ###########
     Route::get('/history', 'HistoryController@index')->name('history');
-    Route::get('/history/detail', 'HistoryController@edit')->name('history.detail');
+    Route::get('/history/detail/{result}', 'HistoryController@edit')->name('history.detail');
 
 });
 ############# Data ###########

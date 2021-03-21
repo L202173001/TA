@@ -18,27 +18,45 @@
 									        <tr>
                                                 <td width="15%"><b>Name</b></td>
                                                 <td width="1%">:</td>
-                                                <td class="result"></td>
+                                                <td class="result">{{$result->name}}</td>
                                             </tr>
                                             <tr>
                                                 <td><b>Phone</b></td>
                                                 <td>:</td>
-                                                <td class="result"></td>
+                                                <td class="result">{{$result->phone_number}}</td>
                                             </tr>
-                                            <tr>
-                                                <td><b>Selected Symptoms</b></td>
-                                                <td>:</td>
-                                                <td class="result"></td>
-                                            </tr>
+                                            @foreach ($result->History as $item)
+                                              @if ($loop -> first)
+                                                <tr>
+                                                  <td><b>Selected Symptoms</b></td>
+                                                  <td>:</td>
+                                                  <td class="result">- {{ $item -> SymptomCode -> symptom }}</td>
+                                                </tr>
+                                              @else
+                                                <tr>
+                                                  <td></td>
+                                                  <td></td>
+                                                  <td class="result">- {{ $item -> SymptomCode -> symptom }}</td>
+                                                </tr>
+                                              @endif
+                                            @endforeach
                                             <tr>
                                                 <td><b>Result</b><br><i>Forward Chaining</i></td>
                                                 <td>:</td>
-                                                <td class="result"></td>
+                                                @if(isset($result->Trouble->trouble))
+												<td class="result">{{$result->Trouble->trouble}}</td>
+												@else
+												<td class="result">No information was found.
+												@endif
                                             </tr>
                                             <tr>
                                                 <td><b>Solutions</b></td>
                                                 <td>:</td>
-                                                <td class="result"></td>
+                                                @if(isset($result->Trouble->solution))
+												<td class="result">{{$result->Trouble->solution}}</td>
+												@else
+												<td class="result">No information was found.
+												@endif
                                             </tr>	
 									</table>
 								</div>

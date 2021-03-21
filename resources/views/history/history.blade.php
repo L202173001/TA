@@ -25,15 +25,24 @@
 											</tr>
 										</thead>
 										<tbody>
-											<td></td>
-											<td></td>
-											<td></td>
-											<td></td>
-											<td>
-												<a href="{{ route('history.detail') }}" class="btn btn-success btn-sm">
+										@foreach($results as $no=>$result)
+											<tr>
+												<td>{{$results->firstItem()+$no }}</td>
+												<td>{{$result->name}}</td>
+												<td>{{$result->phone_number}}</td>
+												@if(isset($result->Trouble->trouble))
+												<td>{{$result->Trouble->trouble}}</td>
+												@else
+												<td>No information was found.
+												@endif
+												<td>
+											
+												<a href="{{ route('history.detail', ['result'=>$result->id])}}" class="btn btn-success btn-sm">
 													<span class="fa fa-cog"></span>
 												</a>
-											</td>
+												</td>
+											</tr>
+										@endforeach
 										</tbody>
 									</table>
 								</div>

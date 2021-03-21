@@ -16,7 +16,8 @@ class HistoryController extends Controller
     public function index()
     {
         $results = Result::paginate(10);
-        dd($results[0] -> Trouble -> trouble);
+        // dd($results[0] -> Trouble -> trouble);
+        return view('history.history',  ['results' => $results]);
     }
 
     /**
@@ -57,9 +58,9 @@ class HistoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit()
+    public function edit(Result $result)
     {
-        return view('history.history-detail');
+        return view('history.history-detail', compact('result'));
     }
 
     /**
