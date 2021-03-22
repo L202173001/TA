@@ -107,8 +107,13 @@ function nextForm(e) {
         toastr.error('Name and Phone Number must be filled out!', 'Error!')
         return false;
     } else {
+      if($.isNumeric(phone)) {
         $(e).parent().next().show();
         $(e).parent().hide();
+      } else {
+        toastr.error('Phone must Number!', 'Error!')
+        return false;
+      }
     }
     
 }
