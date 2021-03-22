@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="jumbotron">
-    <div class="container">
+    <div class="container  pt-5 pt-md-0 mt-5 mt-md-5">
         <!-- Outer Row -->
         <div class="row justify-content-center mt-md-5">
             <div class="col-lg-12 text-center mt-md-5">
@@ -16,7 +16,7 @@
                         <!-- Nested Row within Card Body -->
                         <div class="row">
                             <div class="col-lg">
-                                <div class="p-5">
+                                <div class="p-md-5">
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">Troubleshoot Result</h1>
                                         <hr>

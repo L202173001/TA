@@ -6,7 +6,7 @@
 <link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet">
 
 <div class="jumbotron">
-    <div class="container">
+    <div class="container pt-5 pt-md-0 mt-5 mt-md-5">
         <!-- Outer Row -->
         <div class="row justify-content-center mt-md-5">
 
