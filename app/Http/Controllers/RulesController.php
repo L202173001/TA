@@ -135,6 +135,6 @@ class RulesController extends Controller
     public function destroy($trouble, Rule $rule)
     {
         $rule->delete();
-        return redirect()->route('rule.detail',['trouble'=>$trouble])->with('status','Rule Data has been Delleted');
+        return redirect()->route('rule.detail',['trouble'=>$trouble])->with('status','Rule Data has been Deleted');
     }
 }

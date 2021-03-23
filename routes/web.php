@@ -83,7 +83,8 @@ Route::middleware('auth')->prefix('dashboard')->group(function () {
     ############# History ###########
     Route::get('/history', 'HistoryController@index')->name('history');
     Route::get('/history/detail/{result}', 'HistoryController@edit')->name('history.detail');
-
+    Route::get('/history/delete/{result}', 'HistoryController@destroy')->name('history.destroy');
+    
 });
 ############# Data ###########
 Route::get('/data', 'DataController@index')->name('data');

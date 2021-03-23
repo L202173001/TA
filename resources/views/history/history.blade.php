@@ -40,6 +40,11 @@
 												<a href="{{ route('history.detail', ['result'=>$result->id])}}" class="btn btn-success btn-sm">
 													<span class="fa fa-cog"></span>
 												</a>
+												@method('delete')	
+												@csrf
+												<a href="#" class="btn btn-danger btn-sm delete" result_id ="{{ $result->id }}">
+													<span class="far fa-trash-alt"></span>
+												</a>
 												</td>
 											</tr>
 										@endforeach
@@ -54,4 +59,28 @@
 			</div>
 			<!-- END MAIN CONTENT -->
 		</div>
+@stop
+
+@section('footer')
+	<script>
+		$('.delete').click(function(){
+			var result_id = $(this).attr('result_id');
+			swal({
+				title: "Are you sure?",
+				text: "Are you sure you want to delete symptom data with ID "+result_id+" ?",
+				icon: "warning",
+				buttons: true,
+				dangerMode: true,
+				})
+				.then((willDelete) => {
+					console.log(willDelete);
+					if (willDelete) {
+						url = "{{ route('history.destroy',['result'=>":id"]) }}";
+						url = url.replace(':id', result_id);
+						window.location = url;
+					}
+			});
+		});
+	</script>
+
 @endsection

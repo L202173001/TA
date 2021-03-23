@@ -8,6 +8,7 @@ use App\Models\Rule;
 use App\Models\Symptom;
 use App\Models\Trouble;
 use App\Models\Vrule;
+use App\Models\Result;
 
 class SiteController extends Controller
 {
@@ -25,8 +26,9 @@ class SiteController extends Controller
         $symptom = Symptom::all()->count();
         $trouble = Trouble::all()->count();
         $rule = Vrule::all()->count();
+        $history = Result::all()->count();
 
-        return view('sites.dashboard', compact('symptom','trouble','rule'));
+        return view('sites.dashboard', compact('symptom','trouble','rule','history'));
     }
     public function postlogin(Request $request){
         $request->validate([
