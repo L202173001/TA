@@ -4,10 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Symptom extends Model
 {
     use HasFactory;
+    use SoftDeletes;
+
     protected $fillable = ['symptoms_code', 'symptom'];
     protected $primaryKey = 'symptoms_code';
     public $incrementing = false;

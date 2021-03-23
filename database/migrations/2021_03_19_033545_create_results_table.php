@@ -22,6 +22,7 @@ class CreateResultsTable extends Migration
             $table->char('troubles_code', 3) -> nullable();
             $table->foreign('troubles_code')->references('troubles_code')->on('troubles');
             $table->timestamps();
+            $table->softDeletes();
         });
         Schema::enableForeignKeyConstraints();
     }

@@ -17,6 +17,8 @@ class CreateSymptomsTable extends Migration
             $table->char('symptoms_code', 3)->unique();
             $table->char('symptom');
             $table->timestamps();
+            $table->softDeletes();
+
         });
     }
 

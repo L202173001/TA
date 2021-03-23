@@ -67,14 +67,24 @@ class PredictionController extends Controller
             ]);
         } else {
             $diagnosis = Trouble::where("troubles_code",$data['troubles_code'])->first();
-            $symptoms = SymptomHistory::where("result_id", $result_id) -> get();
-            return view('devs.result', [
-                "status" => True,
-                "name"=> $data['name'],
-                "phone"=> $data['phone'],
-                "trouble"=>$diagnosis,
-                "symptoms" => $symptoms
-            ]);
+            if($diagnosis) {
+              $symptoms = SymptomHistory::where("result_id", $result_id) -> get();
+              return view('devs.result', [
+                  "status" => True,
+                  "name"=> $data['name'],
+                  "phone"=> $data['phone'],
+                  "trouble"=>$diagnosis,
+                  "symptoms" => $symptoms
+              ]);
+            } else {
+              $symptoms = SymptomHistory::where("result_id", $result_id) -> get();
+              return view('devs.result', [
+                  "status"=>False,
+                  "name"=> $data['name'],
+                  "phone"=> $data['phone'],
+                  "symptoms" => $symptoms
+              ]);
+            }
         }
 
     }
