@@ -43,7 +43,7 @@
                                                 <hr>
                                             </div>
                                             <div class="form-group text-center">
-                                                <h3>{{$symptom->symptoms_code}} - {{$symptom->symptom}}</h3>
+                                                <h3>{{$symptom->symptom}}</h3>
                                             </div>
                                             <div class="row justify-content-center">
                                                 <div class="col-md-3">

@@ -46,7 +46,7 @@
 									<div class="metric">
 										<span class="icon"><i class="fa fa-database	"></i></span>
 										<p>
-											<span class="number">7</span>
+											<span class="number">{{ $history }}</span>
 											<span class="title">History</span>
 										</p>
 									</div>

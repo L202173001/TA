@@ -15,11 +15,13 @@
 							</div>
 								<div class="panel-body">
 									<table class="table">
+                  <thead>
 									        <tr>
                                                 <td width="15%"><b>Name</b></td>
                                                 <td width="1%">:</td>
                                                 <td class="result">{{$result->name}}</td>
                                             </tr>
+                  </thead>
                                             <tr>
                                                 <td><b>Phone</b></td>
                                                 <td>:</td>
@@ -30,13 +32,13 @@
                                                 <tr>
                                                   <td><b>Selected Symptoms</b></td>
                                                   <td>:</td>
-                                                  <td class="result">- {{ $item -> SymptomCode -> symptom }}</td>
+                                                  <td class="result">{{ $item -> SymptomCode -> symptoms_code }} - {{ $item -> SymptomCode -> symptom }}</td>
                                                 </tr>
                                               @else
                                                 <tr>
                                                   <td></td>
                                                   <td></td>
-                                                  <td class="result">- {{ $item -> SymptomCode -> symptom }}</td>
+                                                  <td class="result">{{ $item -> SymptomCode -> symptoms_code }} - {{ $item -> SymptomCode -> symptom }}</td>
                                                 </tr>
                                               @endif
                                             @endforeach
