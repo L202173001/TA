@@ -90,10 +90,9 @@ Route::middleware('auth')->prefix('dashboard')->group(function () {
 Route::get('/data', 'DataController@index')->name('data');
 
 ############# Prediction ###########
-Route::get('/prediction', 'PredictionController@index')->name('prediction');
-Route::post('/prediction/action', 'PredictionController@predict')->name('prediction.action');
+// Route::get('/prediction', 'PredictionController@index')->name('prediction');
+// Route::post('/prediction/action', 'PredictionController@predict')->name('prediction.action');
 
 ############# Troubleshoot ###########
 Route::get('/troubleshoot', 'TroubleshootController@index')->name('troubleshoot');
-// Route::post('/dataUser/troubleshoot', 'TroubleshootController@create')->name('dataUser.troubleshoot');
-Route::post('/troubleshoot/troubleshootResult', 'PredictionController@predict')->name('troubleshoot.troubleshootResult');
+Route::post('/troubleshoot/troubleshootResult', 'TroubleshootController@predict')->name('troubleshoot.troubleshootResult');

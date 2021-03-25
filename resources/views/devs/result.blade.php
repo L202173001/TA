@@ -1,6 +1,6 @@
 @extends('layouts.navbar')
 
-@section('title','Troubleshoot Data User')
+@section('title','Troubleshoot Result')
 
 @section('content')
 <div class="jumbotron">
@@ -41,13 +41,13 @@
                                                 <tr>
                                                   <td><b>Selected Symptoms</b></td>
                                                   <td>:</td>
-                                                  <td class="result">{{ $item -> SymptomCode -> symptom }}</td>
+                                                  <td class="result">{{ $item -> SymptomCode -> symptoms_code }} - {{ $item -> SymptomCode -> symptom }}</td>
                                                 </tr>
                                               @else
                                                 <tr>
                                                   <td></td>
                                                   <td></td>
-                                                  <td class="result">{{ $item -> SymptomCode -> symptom }}</td>
+                                                  <td class="result">{{ $item -> SymptomCode -> symptoms_code }} - {{ $item -> SymptomCode -> symptom }}</td>
                                                 </tr>
                                               @endif
                                             @endforeach

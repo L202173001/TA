@@ -40,9 +40,9 @@
 												<td>{{ $rule->symptom->symptoms_code }}</td>
 												<td>{{ $rule->symptom->symptom }}</td>
 												<td>
-													<a href="{{ route('rule.edit', ['rule'=>$rule->id]) }}" class="btn btn-warning btn-sm">
+													<!-- <a href="{{ route('rule.edit', ['rule'=>$rule->id]) }}" class="btn btn-warning btn-sm">
 														<span class="far fa-edit"></span>
-													</a>
+													</a> -->
 													@method('delete')	
 													@csrf
 													<a href="#" class="btn btn-danger btn-sm delete" rule_id="{{ $rule->id }}" troubles_code="{{$rule->troubles_code}}">

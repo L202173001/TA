@@ -60,7 +60,7 @@
                                                 </div>
                                             </div>
                                             
-                                            <button type="button" id="next" onclick="nextForm(this)" class="btn btn-solid-lg btn-outline-primary btn-block mt-3">Continue</button>
+                                            <button type="button" id="next" onclick="nextForm(this)" class="btn btn-solid-lg btn-block mt-3">Continue</button>
                                             <input type="button" id="previous" onclick="prevForm(this)" class="btn btn-outline-lg btn-block" value="Previous">
 
                                         </fieldset>

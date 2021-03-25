@@ -20,9 +20,8 @@ class CreateResultsTable extends Migration
             $table->String('phone_number', 12);
             $table->String('status', 5);
             $table->char('troubles_code', 3) -> nullable();
-            $table->foreign('troubles_code')->references('troubles_code')->on('troubles');
+            $table->foreign('troubles_code')->references('troubles_code')->on('troubles')->onDelete('cascade');
             $table->timestamps();
-            $table->softDeletes();
         });
         Schema::enableForeignKeyConstraints();
     }

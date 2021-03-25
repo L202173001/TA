@@ -46,7 +46,7 @@
                                                 <td><b>Result</b><br><i>Forward Chaining</i></td>
                                                 <td>:</td>
                                                 @if(isset($result->Trouble->trouble))
-												<td class="result">{{$result->Trouble->trouble}}</td>
+												<td class="result">{{$result->Trouble->troubles_code}} - {{$result->Trouble->trouble}}</td>
 												@else
 												<td class="result">No information was found.
 												@endif

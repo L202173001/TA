@@ -18,8 +18,8 @@ class CreateSymptomHistoryTable extends Migration
             $table->id();
             $table->unsignedBigInteger('result_id');
             $table->char('symptoms_code', 3);
-            $table->foreign('symptoms_code')->references('symptoms_code')->on('symptoms');
-            $table->foreign('result_id')->references('id')->on('results');
+            $table->foreign('symptoms_code')->references('symptoms_code')->on('symptoms')->onDelete('cascade');
+            $table->foreign('result_id')->references('id')->on('results')->onDelete('cascade');
             $table->timestamps();
         });
         Schema::enableForeignKeyConstraints();

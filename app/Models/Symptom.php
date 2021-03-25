@@ -9,7 +9,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Symptom extends Model
 {
     use HasFactory;
-    use SoftDeletes;
 
     protected $fillable = ['symptoms_code', 'symptom'];
     protected $primaryKey = 'symptoms_code';

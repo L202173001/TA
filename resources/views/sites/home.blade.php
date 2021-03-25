@@ -12,7 +12,7 @@
                         <div class="text-container">
                             <h1><span class="turquoise">Expert System</span></h1>
                             <p class="p-large"> Troubleshooting Car Damage Using Forward Chaining Method</p>
-                            <a class="btn-solid-lg page-scroll" href="#">TROUBLESHOOT NOW</a>
+                            <a class="btn-solid-lg page-scroll" href="/troubleshoot">TROUBLESHOOT NOW</a>
                         </div> <!-- end of text-container -->
                     </div> <!-- end of col -->
                     <div class="col-lg-6">

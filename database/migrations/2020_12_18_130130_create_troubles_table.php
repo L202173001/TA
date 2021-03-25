@@ -18,7 +18,6 @@ class CreateTroublesTable extends Migration
             $table->char('trouble');
             $table->string('solution');
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 

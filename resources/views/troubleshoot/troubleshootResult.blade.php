@@ -1,6 +1,6 @@
 @extends('layouts.navbar')
 
-@section('title','Troubleshoot Data User')
+@section('title','Troubleshoot Result')
 
 @section('content')
 <div class="jumbotron">
@@ -18,7 +18,7 @@
                             <div class="col-lg">
                                 <div class="p-md-5">
                                     <div class="text-center">
-                                        <h1 class="h4 text-gray-900 mb-4">Troubleshodddddot Result</h1>
+                                        <h1 class="h4 text-gray-900 mb-4">Troubleshoot Result</h1>
                                         <hr>
                                     </div>
                                     <div class="result">
@@ -34,11 +34,24 @@
                                                 <td>:</td>
                                                 <td class="result">{{ $phone }}</td>
                                             </tr>
-                                            <tr>
-                                                <td><b>Selected Symptoms</b></td>
-                                                <td>:</td>
-                                                <td class="result"></td>
-                                            </tr>
+
+                                            
+                                            @foreach ($symptoms as $item)
+                                              @if ($loop -> first)
+                                                <tr>
+                                                  <td><b>Selected Symptoms</b></td>
+                                                  <td>:</td>
+                                                  <td class="result">{{ $item -> SymptomCode -> symptoms_code }} - {{ $item -> SymptomCode -> symptom }}</td>
+                                                </tr>
+                                              @else
+                                                <tr>
+                                                  <td></td>
+                                                  <td></td>
+                                                  <td class="result">{{ $item -> SymptomCode -> symptoms_code }} - {{ $item -> SymptomCode -> symptom }}</td>
+                                                </tr>
+                                              @endif
+                                            @endforeach
+                                            
                                             <tr>
                                                 <td><b>Result</b><br><i>Forward Chaining</i></td>
                                                 <td>:</td>
@@ -59,11 +72,22 @@
                                                 <td>:</td>
                                                 <td class="result">{{ $phone }}</td>
                                             </tr>
-                                            <tr>
-                                                <td><b>Selected Symptoms</b></td>
-                                                <td>:</td>
-                                                <td class="result"></td>
-                                            </tr>
+                                            
+                                            @foreach ($symptoms as $item)
+                                              @if ($loop -> first)
+                                                <tr>
+                                                  <td><b>Selected Symptoms</b></td>
+                                                  <td>:</td>
+                                                  <td class="result">{{ $item -> SymptomCode -> symptoms_code }} - {{ $item -> SymptomCode -> symptom }}</td>
+                                                </tr>
+                                              @else
+                                                <tr>
+                                                  <td></td>
+                                                  <td></td>
+                                                  <td class="result">{{ $item -> SymptomCode -> symptoms_code }} - {{ $item -> SymptomCode -> symptom }}</td>
+                                                </tr>
+                                              @endif
+                                            @endforeach
                                             <tr>
                                                 <td><b>Result</b><br><i>Forward Chaining</i></td>
                                                 <td>:</td>
