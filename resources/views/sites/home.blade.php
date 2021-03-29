@@ -33,7 +33,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <h2>Find Out the Damage and Repair 
+                    <h2>How To Find Out the Damage and Repair 
 						<br>Solution for Your Car</h2>
                 </div> <!-- end of col -->
             </div> <!-- end of row -->
@@ -45,7 +45,7 @@
                         <img class="card-image" src="{{asset('frontend')}}/images/services-icon-1.svg" alt="alternative">
                         <div class="card-body">
                             <h4 class="card-title">Fill in Biodata</h4>
-                            <p>Before doing troubleshooting, you need to fill in biodata in the form of name and cellphone number.<br><br></p>
+                            <p>Go to the troubleshoot menu then before doing troubleshooting, you need to fill in biodata in the form of name and cellphone number.<br><br></p>
                         </div>
                     </div>
                     <!-- end of card -->
@@ -55,7 +55,7 @@
                         <img class="card-image" src="{{asset('frontend')}}/images/services-icon-2.svg" alt="alternative">
                         <div class="card-body">
                             <h4 class="card-title">Filling Symptoms</h4>
-                            <p>Fill in the symptoms experienced in your car available in the checkbox.<br><br><br></p>
+                            <p>Fill in the symptoms experienced in your car by selecting the symptoms available in the form of radio buttons.<br><br><br></p>
                         </div>
                     </div>
                     <!-- end of card -->
@@ -65,7 +65,7 @@
                         <img class="card-image" src="{{asset('frontend')}}/images/services-icon-3.svg" alt="alternative">
                         <div class="card-body">
                             <h4 class="card-title">Results and Solutions</h4>
-                            <p>The results of the damage from the symptoms that have been entered will appear along with the solution for the damage.</p>
+                            <p>The results of the damage from the symptoms that have been entered will appear along with the solution for the damage<br>.</p>
                         </div>
                     </div>
                     <!-- end of card -->
