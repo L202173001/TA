@@ -68,7 +68,7 @@
 			var result_id = $(this).attr('result_id');
 			swal({
 				title: "Are you sure?",
-				text: "Are you sure you want to delete symptom data with ID "+result_id+" ?",
+				text: "Are you sure you want to delete history data with ID "+result_id+" ?",
 				icon: "warning",
 				buttons: true,
 				dangerMode: true,
