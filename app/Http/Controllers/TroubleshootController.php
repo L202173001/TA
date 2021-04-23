@@ -80,15 +80,16 @@ class TroubleshootController extends Controller
                   "trouble"=>$diagnosis,
                   "symptoms" => $symptoms
               ]);
-            } else {
-              $symptoms = SymptomHistory::where("result_id", $result_id) -> get();
-              return view('troubleshoot.troubleshootResult', [
-                  "status"=>False,
-                  "name"=> $data['name'],
-                  "phone"=> $data['phone'],
-                  "symptoms" => $symptoms
-              ]);
-            }
+            } 
+            // else {
+            //   $symptoms = SymptomHistory::where("result_id", $result_id) -> get();
+            //   return view('troubleshoot.troubleshootResult', [
+            //       "status"=>False,
+            //       "name"=> $data['name'],
+            //       "phone"=> $data['phone'],
+            //       "symptoms" => $symptoms
+            //   ]);
+            // }
         }
 
     }

@@ -50,6 +50,7 @@
 										@endforeach
 										</tbody>
 									</table>
+									{{$results->links()}}
 								</div>
 							</div>
 							<!-- END CONDENSED TABLE -->
