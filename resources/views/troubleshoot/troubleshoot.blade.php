@@ -54,7 +54,7 @@
                                                 </div>
                                                 <div class="col-md-3">
                                                 <label class="container2">No
-                                                    <input type="radio" name="{{$symptom->symptoms_code}}" value="No">
+                                                    <input type="radio" checked="checked" name="{{$symptom->symptoms_code}}" value="No">
                                                     <span class="checkmark"></span>
                                                 </label>
                                                 </div>
