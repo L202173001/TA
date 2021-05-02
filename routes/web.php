@@ -48,6 +48,7 @@ Route::get('/loginn', 'SiteController@login')->name('login');
 Route::post('/postlogin', 'SiteController@postlogin');
 Route::get('/logout', 'SiteController@logout');
 
+
 /*
 | Dashbaord Route
 */

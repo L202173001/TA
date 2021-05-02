@@ -48,19 +48,19 @@
                                             <div class="row justify-content-center">
                                                 <div class="col-md-3">
                                                 <label class="container2">Yes
-                                                    <input type="radio" name="{{$symptom->symptoms_code}}" value="Yes">
+                                                    <input type="radio" onclick="saveYes(this)" name="{{$symptom->symptoms_code}}" value="Yes">
                                                     <span class="checkmark"></span>
                                                 </label>
                                                 </div>
                                                 <div class="col-md-3">
                                                 <label class="container2">No
-                                                    <input type="radio" checked="checked" name="{{$symptom->symptoms_code}}" value="No">
+                                                    <input type="radio" onclick="saveNo(this)" checked="checked" name="{{$symptom->symptoms_code}}" value="No">
                                                     <span class="checkmark"></span>
                                                 </label>
                                                 </div>
                                             </div>
                                             
-                                            <button type="button" id="next" onclick="nextForm(this)" class="btn btn-solid-lg btn-block mt-3">Continue</button>
+                                            <button type="button" id="next" onclick="nextForm(this, '{{$symptom->symptoms_code}}')" class="btn btn-solid-lg btn-block mt-3">Continue</button>
                                             <input type="button" id="previous" onclick="prevForm(this)" class="btn btn-outline-lg btn-block" value="Previous">
 
                                         </fieldset>
@@ -75,6 +75,7 @@
                                             </div>
                                             <div class="form-group text-center">
                                                 <p>Input is complete, are you sure of your input? If not, please check your input again. If you are sure, please press the submit button.</p>
+                                                <div id="preview"> </div>
                                             </div>
                                             <input type="button"  id="previous" onclick="prevForm(this)" class="btn btn-outline-lg btn-block" value="Previous">
                                             <input type="submit" name="submit" id="submit" class="btn btn-solid-lg btn-block" value="Submit">
@@ -100,7 +101,33 @@
 
 <script type="text/javascript">
 var current_
-function nextForm(e) {
+var preview = {};
+var trouble = [];
+var trouble_code = [];
+var last = 0;
+
+@foreach ($symptoms as $no=>$symptom)
+  trouble.push('{{$symptom->symptom}}');
+  trouble_code.push('{{$symptom->symptoms_code}}');
+  preview['{{$symptom->symptoms_code}}'] = 'No';
+  @if($loop->last)
+    last = '{{$symptom->symptoms_code}}'
+  @endif
+@endforeach
+
+console.log(trouble_code);
+
+function saveNo(e) {
+  preview[e.name] = 'No';
+  console.log(preview);
+}
+
+function saveYes(e) {
+  preview[e.name] = 'Yes';
+  console.log(preview);
+}
+
+function nextForm(e, code) {
     var phone = document.forms["ms-form"]["phone"].value;
     var name = document.forms["ms-form"]["name"].value;
     if ((phone == "") || (name == "")) {
@@ -108,6 +135,16 @@ function nextForm(e) {
         return false;
     } else {
       if($.isNumeric(phone)) {
+
+        var text = "";
+        if(code == last) {
+          for (i = 0; i < trouble.length; i++) { 
+            text += "<p>"+trouble[i]+"  <b>"+preview[trouble_code[i]]+"</b></p>";
+          }
+          $("#preview").append(text);
+        }
+        text = "";
+        
         $(e).parent().next().show();
         $(e).parent().hide();
       } else {
